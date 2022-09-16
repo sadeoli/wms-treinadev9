@@ -8,7 +8,7 @@ describe 'Usuario visita tela inicial' do
         visit root_path
 
         # Assert
-        expect(page).to have_content('Galpões & Estoque')
+        expect(page).to have_content('Sistema de Galpões e Estoque')
     end
 
     it 'e vê os galpões cadastrados' do
@@ -20,6 +20,8 @@ describe 'Usuario visita tela inicial' do
         visit root_path
 
         # Assert
+        expect(page).not_to have_content('Não existem galpões cadastrados')
+
         expect(page).to have_content('Rio')
         expect(page).to have_content('Código: SDU')
         expect(page).to have_content('Cidade: Rio de Janeiro')
@@ -27,7 +29,17 @@ describe 'Usuario visita tela inicial' do
 
         expect(page).to have_content('Maceio')
         expect(page).to have_content('Código: MCZ')
-        expect(page).to have_content('50000')
+        expect(page).to have_content('50000 m2')
+    end
+
+    it 'e não existem galpões cadastrados' do
+        # Arrange
+
+        # Act
+        visit root_path
+
+        # Assert
+        expect(page).to have_content('Não existem galpões cadastrados')
     end
 
 end
