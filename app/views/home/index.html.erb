@@ -2,7 +2,7 @@
 
 <h3>Galpões</h3>
 <% @warehouses.each do |w|  %>
-    <%= w.name %>
+    <%= link_to w.name, w %>
     Código: <%= w.code %>
     Cidade: <%= w.city %>
     Área: <%= w.area %> m2
