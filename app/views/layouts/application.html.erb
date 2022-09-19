@@ -12,7 +12,13 @@
   <body>
     <header>
       <h1>Sistema de Galpões e Estoque</h1>
-    </header>
+    </header><nav> <ul>  <li> 
+    <%= link_to 'Home', root_path %>
+    </li>
+    <li> 
+    <%= link_to 'Cadastrar Galpão', new_warehouse_path %>
+    </li>
+    </ul></nav>
     <br>
     <main>
     <%= yield %>

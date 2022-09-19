@@ -4,7 +4,7 @@ describe 'Usuario vê detalhes de um galpão' do
     it 'e vê informações adicionais' do
         # Arrange
         Warehouse.create(name: 'Aeroporto SP', code: 'GRU', city: 'Guarulhos', area: 100_000,
-                            adress: 'Avenida do Aeroporto, 1020', cep: '15000-000', 
+                            adress: 'Avenida do Aeroporto, 1020', cep: '15000-000', state: 'SP',
                                 description: 'Galpão destinado a cargas internacionais')
 
         # Act
@@ -18,6 +18,7 @@ describe 'Usuario vê detalhes de um galpão' do
         expect(page).to have_content('Área: 100000 m2')
         expect(page).to have_content('Endereço: Avenida do Aeroporto, 1020')
         expect(page).to have_content('CEP: 15000-000')
+        expect(page).to have_content('Estado: SP')
         expect(page).to have_content('Galpão destinado a cargas internacionais')
     end
 
