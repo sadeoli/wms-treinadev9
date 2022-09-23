@@ -13,9 +13,9 @@ describe 'Usuario visita tela inicial' do
 
     it 'e vê os galpões cadastrados' do
         # Arrange
-        Warehouse.create(name: 'Rio', code: 'SDU', city: 'Rio de Janeiro', area: 60_000, 
+        Warehouse.create!(name: 'Rio', code: 'SDU', city: 'Rio de Janeiro', area: 60_000, 
                         description: 'Galpão do Rio', address: 'Av. do Porto, 1000', cep: '20000-000', state: 'RJ')
-        Warehouse.create(name: 'Maceio', code: 'MCZ', city: 'Maceio', area: 50_000, 
+        Warehouse.create!(name: 'Maceio', code: 'MCZ', city: 'Maceio', area: 50_000, 
                         description: 'Perto do Aeroporto', address: 'Av. Atlantica, 50', cep: '80000-000', state: 'AL' )
 
         # Act
@@ -28,7 +28,6 @@ describe 'Usuario visita tela inicial' do
         expect(page).to have_content('Código: SDU')
         expect(page).to have_content('Cidade: Rio de Janeiro')
         expect(page).to have_content('60000 m2')
-
         expect(page).to have_content('Maceio')
         expect(page).to have_content('Código: MCZ')
         expect(page).to have_content('50000 m2')
