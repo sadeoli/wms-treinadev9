@@ -1,25 +1,23 @@
 <section id="warehouses">
 
     <h2>Galpões</h2>
-    <div>
-        <%= notice %>
-    </div>
-    <% @warehouses.each do |w| %>
-        <div>
-            <h3><%= link_to w.name, w %></h3>
-        <dl>
-        <dt> Código: </dt>
-        <dd> <%= w.code %> </dd>
-        <dt> Cidade: </dt>
-        <dd> <%= w.city %> </dd>
-        <dt> Área: </dt>
-        <dd> <%= w.area %> m2 </dd>
-        </dl>
-        </div>
-    <% end %>
+    <% if @warehouses.any? %>
+        <% @warehouses.each do |w| %>
+            <div>
+                <h3><%= link_to w.name, w %></h3>
+                <dl>
+                    <dt> Código: </dt>
+                    <dd> <%= w.code %> </dd>
+                    <dt> Cidade: </dt>
+                    <dd> <%= w.city %> </dd>
+                    <dt> Área: </dt>
+                    <dd> <%= w.area %> m2 </dd>
+                </dl>
+            </div>
+        <% end %>
 
-    <% if @warehouses.empty? %>
-    <p> Não existem galpões cadastrados</p>
+    <% else %>
+        <p>Não existem galpões cadastrados.</p>
     <%end%>
 
 </section>

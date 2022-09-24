@@ -23,7 +23,6 @@ describe 'Usuario visita tela inicial' do
 
         # Assert
         expect(page).not_to have_content('Não existem galpões cadastrados')
-
         expect(page).to have_content('Rio')
         expect(page).to have_content('Código: SDU')
         expect(page).to have_content('Cidade: Rio de Janeiro')

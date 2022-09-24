@@ -1,8 +1,7 @@
 class WarehousesController < ApplicationController
     before_action :set_warehouse, only: [:show, :edit, :update, :destroy] 
 
-    def show
-    end
+    def show; end
 
     def new
         @warehouse = Warehouse.new
@@ -18,12 +17,11 @@ class WarehousesController < ApplicationController
         end
     end
 
-    def edit
-    end
+    def edit; end
 
     def update
         if @warehouse.update(warehouse_params)
-            redirect_to warehouse_path(@warehouse), notice: 'Galpão atualizado com sucesso.'
+            redirect_to @warehouse, notice: 'Galpão atualizado com sucesso.'
         else
             flash.now[:notice] = 'Não foi possível atualizar o galpão.'
             render 'edit'

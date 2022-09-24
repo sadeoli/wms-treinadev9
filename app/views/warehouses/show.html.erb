@@ -19,7 +19,7 @@
 </div>
 <div>
     <%= link_to 'Editar', edit_warehouse_path(@warehouse) %>
-    <%= button_to 'Remover', warehouse_path(@warehouse), method: :delete  %>
+    <%= button_to 'Remover', @warehouse, method: :delete  %>
 </div>
 <div>
     <%= link_to 'Voltar', root_path %>
