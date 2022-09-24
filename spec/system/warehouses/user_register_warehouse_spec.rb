@@ -40,9 +40,7 @@ describe 'Usuário cadastra um galpão' do
         expect(page).to have_content 'Galpão cadastrado com sucesso.'
         expect(page).to have_content 'Rio de Janeiro'
         expect(page).to have_content 'RIO'
-        expect(page).to have_content '3200'
-    
-    
+        expect(page).to have_content '3200'   
     end
 
     it 'com dados incompletos' do
