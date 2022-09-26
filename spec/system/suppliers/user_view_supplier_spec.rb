@@ -36,4 +36,17 @@ describe 'Usuario vê fornecedores' do
         expect(page).to have_content 'Spark'
         expect(page).to have_content 'Teresina - PI'
     end
+
+    it 'e não existem fornecedores cadastrados' do
+        # Arrange
+
+        # Act
+        visit root_path
+        within('nav') do
+            click_on 'Fornecedores'
+        end
+
+        # Assert
+        expect(page).to have_content('Não existem fornecedores cadastrados.')
+    end
 end
