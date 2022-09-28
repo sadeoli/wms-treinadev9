@@ -3,8 +3,10 @@ require 'rails_helper'
 describe 'Usuário cadastra um galpão' do 
     it 'a partir de tela inicial' do
         # Arrange
+        user = User.create!(name: 'Maria', email: 'maria@email.com', password: 'password')
 
         # Act
+        login_as(user)
         visit root_path
         click_on 'Cadastrar Galpão'
 
@@ -21,8 +23,10 @@ describe 'Usuário cadastra um galpão' do
 
     it 'com sucesso' do
         # Arrange
+        user = User.create!(name: 'Maria', email: 'maria@email.com', password: 'password')
 
         # Act
+        login_as(user)
         visit root_path
         click_on 'Cadastrar Galpão'
         fill_in 'Nome', with: 'Rio de Janeiro'
@@ -45,8 +49,10 @@ describe 'Usuário cadastra um galpão' do
 
     it 'com dados incompletos' do
         # Arrange
+        user = User.create!(name: 'Maria', email: 'maria@email.com', password: 'password')
 
         # Act
+        login_as(user)
         visit root_path
         click_on 'Cadastrar Galpão'
         fill_in 'Nome', with: ''

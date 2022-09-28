@@ -6,7 +6,6 @@ describe 'Usuario se cadastra' do
 
         # Act
         visit root_path
-        click_on 'Entrar'
         click_on 'Sign up'
         within('form') do
             fill_in 'Nome', with: 'Maria'

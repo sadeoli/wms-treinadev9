@@ -3,11 +3,13 @@ require 'rails_helper'
 describe 'Usuario vê detalhes de um fornecedor' do
     it 'e vê informações adicionais' do
         # Arrange
+        user = User.create!(name: 'Maria', email: 'maria@email.com', password: 'password')
         Supplier.create!(corporate_name: 'ACME LTDA', brand_name: 'ACME', registration_number: '43572202100760', 
                         full_address: 'Av das Palmas, 100', city: 'Bauru', state: 'SP', email: 'contato@acme.com',
                         phone: '01148178530')
 
         # Act
+        login_as(user)
         visit root_path
         within('nav') do
             click_on 'Fornecedores'
@@ -25,11 +27,13 @@ describe 'Usuario vê detalhes de um fornecedor' do
 
     it 'e volta para a tela inicial' do
         # Arrange
+        user = User.create!(name: 'Maria', email: 'maria@email.com', password: 'password')
         Supplier.create!(corporate_name: 'ACME LTDA', brand_name: 'ACME', registration_number: '43572202100760', 
                     full_address: 'Av das Palmas, 100', city: 'Bauru', state: 'SP', email: 'contato@acme.com',
                     phone: '01148178530')
 
         # Act
+        login_as(user)
         visit root_path
         within('nav') do
         click_on 'Fornecedores'
@@ -43,6 +47,7 @@ describe 'Usuario vê detalhes de um fornecedor' do
 
     it 'e vê informações de modelo de produto' do
         # Arrange
+        user = User.create!(name: 'Maria', email: 'maria@email.com', password: 'password')
         supplier = Supplier.create!(corporate_name: 'ACME LTDA', brand_name: 'ACME', registration_number: '43572202100760', 
                         full_address: 'Av das Palmas, 100', city: 'Bauru', state: 'SP', email: 'contato@acme.com',
                         phone: '01148178530')
@@ -50,6 +55,7 @@ describe 'Usuario vê detalhes de um fornecedor' do
                             sku: 'TV32-SAMSU-CPTO90256' , supplier: supplier)
 
         # Act
+        login_as(user)
         visit root_path
         within('nav') do
             click_on 'Fornecedores'

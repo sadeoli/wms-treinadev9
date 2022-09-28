@@ -7,7 +7,6 @@ describe 'Usuario se autentica' do
 
         # Act
         visit root_path
-        click_on 'Entrar'
         within('form') do
             fill_in 'E-mail', with: 'sade@email.com'
             fill_in 'Senha', with: 'password'
@@ -29,7 +28,6 @@ describe 'Usuario se autentica' do
 
         # Act
         visit root_path
-        click_on 'Entrar'
         within('form') do
             fill_in 'E-mail', with: 'sade@email.com'
             fill_in 'Senha', with: 'password'
@@ -38,7 +36,7 @@ describe 'Usuario se autentica' do
         click_on 'Sair'
 
         # Assert
-        expect(page).to have_content 'Logout efetuado com sucesso.'
+        expect(page).to have_content 'Para continuar, faça login ou registre-se.'
         within('nav') do
             expect(page).to have_link 'Entrar'
             expect(page).not_to have_button 'Sair'
