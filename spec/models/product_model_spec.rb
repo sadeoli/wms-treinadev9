@@ -23,7 +23,7 @@ RSpec.describe ProductModel, type: :model do
                 supplier = Supplier.create!(corporate_name: 'Samsung', brand_name: 'Samsung Eletronicos LTDA',
                     registration_number: '43572202100760', full_address: 'Av das Nacoes Unidas, 100', 
                     city: 'São Paulo', state: 'SP', email: 'contato@samsung.com', phone: '01148178530')
-                pm = ProductModel.new(name: 'TV 32', weight: '', width: 70, height: 45, depth: 10, 
+                pm = ProductModel.new(name: 'TV 32', weight: nil, width: 70, height: 45, depth: 10, 
                                    sku: 'TV32-SAMSU-CPTO90256' , supplier: supplier)
                 
                 # Act
@@ -38,7 +38,7 @@ RSpec.describe ProductModel, type: :model do
                 supplier = Supplier.create!(corporate_name: 'Samsung', brand_name: 'Samsung Eletronicos LTDA',
                     registration_number: '43572202100760', full_address: 'Av das Nacoes Unidas, 100', 
                     city: 'São Paulo', state: 'SP', email: 'contato@samsung.com', phone: '01148178530')
-                pm = ProductModel.new(name: 'TV 32', weight: 8000, width: '', height: 45, depth: 10, 
+                pm = ProductModel.new(name: 'TV 32', weight: 8000, width: nil, height: 45, depth: 10, 
                                    sku: 'TV32-SAMSU-CPTO90256' , supplier: supplier)
                 
                 # Act
@@ -53,7 +53,7 @@ RSpec.describe ProductModel, type: :model do
                 supplier = Supplier.create!(corporate_name: 'Samsung', brand_name: 'Samsung Eletronicos LTDA',
                     registration_number: '43572202100760', full_address: 'Av das Nacoes Unidas, 100', 
                     city: 'São Paulo', state: 'SP', email: 'contato@samsung.com', phone: '01148178530')
-                pm = ProductModel.new(name: 'TV 32', weight: 8000, width: 70, height: '', depth: 10, 
+                pm = ProductModel.new(name: 'TV 32', weight: 8000, width: 70, height: nil, depth: 10, 
                                    sku: 'TV32-SAMSU-CPTO90256' , supplier: supplier)
                 
                 # Act
@@ -68,7 +68,7 @@ RSpec.describe ProductModel, type: :model do
                 supplier = Supplier.create!(corporate_name: 'Samsung', brand_name: 'Samsung Eletronicos LTDA',
                     registration_number: '43572202100760', full_address: 'Av das Nacoes Unidas, 100', 
                     city: 'São Paulo', state: 'SP', email: 'contato@samsung.com', phone: '01148178530')
-                pm = ProductModel.new(name: 'TV 32', weight: 8000, width: 70, height: 45, depth: '', 
+                pm = ProductModel.new(name: 'TV 32', weight: 8000, width: 70, height: 45, depth: nil, 
                                    sku: 'TV32-SAMSU-CPTO90256' , supplier: supplier)
                 
                 # Act
@@ -85,6 +85,18 @@ RSpec.describe ProductModel, type: :model do
                     city: 'São Paulo', state: 'SP', email: 'contato@samsung.com', phone: '01148178530')
                 pm = ProductModel.new(name: 'TV 32', weight: 8000, width: 70, height: 45, depth: 10, 
                                    sku: '' , supplier: supplier)
+                
+                # Act
+                result = pm.valid?
+                
+                # Assert
+                expect(result).to eq false
+            end
+
+            it  'false when supplier is empty' do
+                # Arrange
+                pm = ProductModel.new(name: 'TV 32', weight: 8000, width: 70, height: 45, depth: 10, 
+                                   sku: 'TV32-SAMSU-CPTO90256' , supplier: nil )
                 
                 # Act
                 result = pm.valid?

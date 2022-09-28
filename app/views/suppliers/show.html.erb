@@ -11,8 +11,38 @@
     <dd> <%= @supplier.email %> </dd>
     <dt> <strong>Telefone:</strong> </dt>
     <dd> <%= @supplier.phone %> </dd>
+    <dt> <strong>Modelos de Produtos</strong> </dt>
+    <dd> <% if @supplier.product_models.any? %>
+    <table>
+        <thread>
+            <tr>
+                <th>Nome</th>
+                <th>SKU</th>
+                <th>Dimensão</th>
+                <th>Peso</th>
+            </tr>
+        </thread>
+        <tbody>
+            <% @supplier.product_models.each do |pm| %>
+            <tr>
+                <td><%= link_to pm.name, pm %></td>
+                <td><%= pm.sku %></td>
+                <td><%= pm.depth %>cm x <%= pm.height %>cm x <%= pm.width %>cm</td>
+                <td><%= pm.weight%>g</td>
+            </tr>
+            <% end %>
+        </tbody>
+    </table>
+    <% else %>
+        <p>Não existem modelos de produtos cadastrados.</p>
+    <% end %>
+
+    </dd>
     </dl>
 </div>
+
+
+
 <div>
     <%= link_to 'Editar', edit_supplier_path(@supplier) %>
 </div>
