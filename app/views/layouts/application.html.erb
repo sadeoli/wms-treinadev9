@@ -14,23 +14,26 @@
       <h1>Sistema de Galpões e Estoque</h1>
     <nav><ul>  
       <li> 
-        <%= link_to 'Home', root_path %>
+        <%= link_to 'Home', root_path %> | 
+        <% if user_signed_in? %>
+          <%= current_user.email %> |
+          <%= link_to 'Sair', root_path %>
+        <% else %>
+          <%= link_to 'Entrar', new_user_session_path %>
+        <% end %>
       </li>
       <li> 
-        <%= link_to 'Cadastrar Galpão', new_warehouse_path %>
-      </li>
-      <li> 
-      <%= link_to 'Fornecedores', suppliers_path %>
-      </li>
-      <li> 
-      <%= link_to 'Modelos de Produtos', product_models_path %>
+        <%= link_to 'Cadastrar Galpão', new_warehouse_path %> |
+        <%= link_to 'Fornecedores', suppliers_path %> |
+        <%= link_to 'Modelos de Produtos', product_models_path %>
       </li>
     </ul></nav>
     </header>
     <br>
     <main>
       <div>
-        <%= notice %>
+        <p class="notice"><%= notice %></p>
+        <p class="alert"><%= alert %></p>
       </div>
       <%= yield %>
     </main>
