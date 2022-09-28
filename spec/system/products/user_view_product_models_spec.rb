@@ -23,7 +23,7 @@ describe 'Usuario vê modelos de produtos' do
         ProductModel.create!(name: 'TV 32', weight: 8000, width: 70, height: 45, depth: 10, 
                             sku: 'TV32-SAMSU-CPTO90256' , supplier: supplier)
         ProductModel.create!(name: 'SoundBar 7.1 Surround', weight: 3000, width: 80, height: 15, 
-                            depth: 20, sku: 'SOU71-SAMSU-NOI277785', supplier: supplier)
+                            depth: 20, sku: 'SOU71-SAMSU-NOI27778', supplier: supplier)
         # Act
         visit root_path
         within('nav') do
@@ -35,7 +35,7 @@ describe 'Usuario vê modelos de produtos' do
         expect(page).to have_content 'TV32-SAMSU-CPTO90256'
         expect(page).to have_content 'Samsung'
         expect(page).to have_content 'SoundBar 7.1 Surround'
-        expect(page).to have_content 'SOU71-SAMSU-NOI277785'
+        expect(page).to have_content 'SOU71-SAMSU-NOI27778'
     end
 
     it 'e não existem modelos de produtos cadastrados' do
