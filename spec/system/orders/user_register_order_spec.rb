@@ -34,8 +34,8 @@ describe 'Usuário cadastra um pedido' do
         login_as(user)
         visit root_path
         click_on 'Registrar Pedido'
-        select warehouse.name, from: 'Galpão Destino'
-        select supplier.corporate_name, from: 'Fornecedor'
+        select 'GRU - Aeroporto SP', from: 'Galpão Destino'
+        select 'ACME LTDA (CNPJ:43.572.202/1007-60)', from: 'Fornecedor'
         fill_in 'Data Prevista', with: '20/12/2022'
         click_on 'Gravar'
 
@@ -43,10 +43,10 @@ describe 'Usuário cadastra um pedido' do
 
         # Assert
         expect(page).to have_content 'Pedido registrado com sucesso'
-        expect(page).to have_content 'Galpão Destino: Aeroporto SP'
-        expect(page).to have_content 'Fornecedor: ACME LTDA'
+        expect(page).to have_content 'Galpão Destino: GRU - Aeroporto SP'
+        expect(page).to have_content 'Fornecedor: ACME LTDA (CNPJ:43.572.202/1007-60)'
         expect(page).to have_content 'Data Prevista de Entrega: 20/12/2022'
-        expect(page).to have_content 'Usuário Responsável: Maria | maria@email.com'
+        expect(page).to have_content 'Usuário Responsável: Maria - maria@email.com'
         expect(page).not_to have_content 'Rio'
         expect(page).not_to have_content 'Spark'
     end
