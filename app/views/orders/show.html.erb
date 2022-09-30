@@ -1,0 +1,18 @@
+<h1>Pedido </h1>
+
+
+<div>
+    <dl>
+    <dt> <strong>Galpão Destino:</strong> </dt>
+    <dd> <%= @order.warehouse.name %></dd>
+    <dt> <strong>Fornecedor:</strong> </dt>
+    <dd> <%= @order.supplier.corporate_name %> </dd>
+    <dt> <strong>Data Prevista de Entrega:</strong> </dt>
+    <dd> <%= I18n.localize(@order.estimated_delivery_date) %></dd>
+    <dt> <strong>Usuário Responsável:</strong> </dt>
+    <dd> <%= @order.user.name %> | <%= @order.user.email %></dd>
+    </dl>
+</div>
+<div>
+    <%= link_to 'Voltar', root_path %>
+</div>
