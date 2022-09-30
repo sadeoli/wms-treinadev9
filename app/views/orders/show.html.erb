@@ -1,18 +1,15 @@
-<h1>Pedido </h1>
+<h1><%= Order.model_name.human %> </h1>
 
 
 <div>
     <dl>
-    <dt> <strong>Galpão Destino:</strong> </dt>
+    <dt> <strong><%= Order.human_attribute_name(:warehouse_id)%>:</strong> </dt>
     <dd> <%= @order.warehouse.full_description %></dd>
-    <dt> <strong>Fornecedor:</strong> </dt>
+    <dt> <strong><%= Order.human_attribute_name(:supplier_id)%>:</strong> </dt>
     <dd> <%= @order.supplier.full_description %> </dd>
-    <dt> <strong>Data Prevista de Entrega:</strong> </dt>
+    <dt> <strong><%= Order.human_attribute_name(:estimated_delivery_date)%>:</strong> </dt>
     <dd> <%= I18n.localize(@order.estimated_delivery_date) %></dd>
-    <dt> <strong>Usuário Responsável:</strong> </dt>
+    <dt> <strong><%= Order.human_attribute_name(:user_id)%>:</strong> </dt>
     <dd> <%= @order.user.description %></dd>
     </dl>
-</div>
-<div>
-    <%= link_to 'Voltar', root_path %>
 </div>
