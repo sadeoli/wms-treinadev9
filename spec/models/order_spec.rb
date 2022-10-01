@@ -12,7 +12,7 @@ RSpec.describe Order, type: :model do
                             full_address: 'Av das Palmas, 100', city: 'Bauru', state: 'SP', email: 'contato@acme.com',
                             phone: '01148178530')
             order = Order.new(user: user, warehouse: warehouse, supplier: supplier, 
-                                estimated_delivery_date: '2022-10-01')    
+                                estimated_delivery_date: 1.day.from_now)    
 
             # Act
             result = order.valid?
@@ -82,7 +82,7 @@ RSpec.describe Order, type: :model do
                             full_address: 'Av das Palmas, 100', city: 'Bauru', state: 'SP', email: 'contato@acme.com',
                             phone: '01148178530')
             order = Order.new(user: user, warehouse: warehouse, supplier: supplier, 
-                                estimated_delivery_date: '2022-10-01')    
+                                estimated_delivery_date: 1.day.from_now)    
 
             # Act
             order.save!
@@ -103,9 +103,9 @@ RSpec.describe Order, type: :model do
                             full_address: 'Av das Palmas, 100', city: 'Bauru', state: 'SP', email: 'contato@acme.com',
                             phone: '01148178530')
             order = Order.create!(user: user, warehouse: warehouse, supplier: supplier, 
-                                estimated_delivery_date: '2022-10-01')    
+                                estimated_delivery_date: 1.day.from_now)    
             other_order = Order.new(user: user, warehouse: warehouse, supplier: supplier, 
-                                estimated_delivery_date: '2022-11-15')    
+                                estimated_delivery_date: 2.day.from_now)    
 
             # Act
             other_order.save!

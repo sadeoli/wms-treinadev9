@@ -13,6 +13,7 @@ class OrdersController < ApplicationController
         if @order.save
             redirect_to @order, notice: 'Pedido registrado com sucesso.'
         else
+            @warehouses = Warehouse.all
             @suppliers = Supplier.all
             flash.now[:notice] = 'Não foi possível registrar o pedido.'
             render 'new'
@@ -20,6 +21,12 @@ class OrdersController < ApplicationController
     end
 
     def show
+    end
+
+    def search
+        @code = params["query"]
+        @order = Order.find_by(code: @code)
+
     end
 
     private
