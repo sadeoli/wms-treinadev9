@@ -28,6 +28,11 @@ class OrdersController < ApplicationController
         @orders = Order.where("code LIKE ?", "%#{@code}%")
     end
 
+    def index
+        @orders = current_user.orders
+        
+    end
+
     private
 
     def set_order 

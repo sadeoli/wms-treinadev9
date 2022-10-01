@@ -1,0 +1,27 @@
+<h1>Meus Pedidos</h1>
+
+<% if @orders.any? %>
+    <table>
+        <thread>
+            <tr>
+                <th><%=Order.human_attribute_name(:code)%></th>
+                <th><%=Order.human_attribute_name(:supplier_id)%></th>
+                <th><%=Order.human_attribute_name(:warehouse_id)%></th>
+                <th><%=Order.human_attribute_name(:estimated_delivery_date)%></th>
+            </tr>
+        </thread>
+        <tbody>
+            <% @orders.each do |order| %>
+            <tr>
+                <td><%= order.code %></td>
+                <td><%= order.supplier.full_description %></td>
+                <td><%= order.warehouse.full_description %></td>
+                <td><%= I18n.localize(order.estimated_delivery_date) %></td>
+            </tr>
+            <% end %>
+        </tbody>
+    </table>
+<% else %>
+    <p>Não existem pedidos cadastrados.</p>
+<% end %>
+<br>
