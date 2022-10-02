@@ -7,11 +7,12 @@ describe 'Usuario se autentica' do
 
         # Act
         visit root_path
-        within('form') do
+        within ('form') do   
             fill_in 'E-mail', with: 'sade@email.com'
             fill_in 'Senha', with: 'password'
             click_on 'Entrar'
         end
+    
 
         # Assert
         expect(page).to have_content 'Login efetuado com sucesso.'

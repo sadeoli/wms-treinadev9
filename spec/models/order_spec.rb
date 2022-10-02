@@ -21,6 +21,38 @@ RSpec.describe Order, type: :model do
             expect(result).to be true
         end
 
+        it 'deve ter um galpão' do
+            # Arrange
+            user = User.create!(name: 'Maria', email: 'maria@email.com', password: 'password')
+            supplier = Supplier.create!(corporate_name: 'ACME LTDA', brand_name: 'ACME', registration_number: '43572202100760', 
+                            full_address: 'Av das Palmas, 100', city: 'Bauru', state: 'SP', email: 'contato@acme.com',
+                            phone: '01148178530')
+            order = Order.new(user: user, warehouse: nil, supplier: supplier, 
+                                estimated_delivery_date: 1.day.from_now)  
+                                
+            # Act
+            result = order.valid?
+
+            # Assert
+            expect(result).to be false
+        end
+
+        it 'deve ter um fornecedor' do
+            # Arrange
+            user = User.create!(name: 'Maria', email: 'maria@email.com', password: 'password')
+            warehouse = Warehouse.create!(name: 'Aeroporto SP', code: 'GRU', city: 'Guarulhos', area: 100_000,
+                        address: 'Avenida do Aeroporto, 1020', cep: '15000-000', state: 'SP',
+                        description: 'Galpão destinado a cargas internacionais')
+            order = Order.new(user: user, warehouse: warehouse, supplier: nil, 
+                                estimated_delivery_date: 1.day.from_now)    
+
+            # Act
+            result = order.valid?
+
+            # Assert
+            expect(result).to be false
+        end
+
         it 'data estimada deve ser obrigatória' do
             # Arrange
             order = Order.new(estimated_delivery_date: '')    

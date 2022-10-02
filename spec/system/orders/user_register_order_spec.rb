@@ -45,7 +45,7 @@ describe 'Usuário cadastra um pedido' do
 
         # Assert
         expect(page).to have_content 'Pedido registrado com sucesso'
-        expect(page).to have_content 'Pedido AJIDA5SAY2'
+        expect(page).to have_content 'AJIDA5SAY2'
         expect(page).to have_content 'Galpão Destino: GRU - Aeroporto SP'
         expect(page).to have_content 'Fornecedor: ACME LTDA (CNPJ:43.572.202/1007-60)'
         expect(page).to have_content 'Data Prevista de Entrega: 20/12/2030'

@@ -13,7 +13,7 @@
         <tbody>
             <% @orders.each do |order| %>
             <tr>
-                <td><%= order.code %></td>
+                <td><%= link_to order.code, order %></td>
                 <td><%= order.supplier.full_description %></td>
                 <td><%= order.warehouse.full_description %></td>
                 <td><%= I18n.localize(order.estimated_delivery_date) %></td>
