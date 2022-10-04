@@ -8,6 +8,7 @@
                 <th><%=Order.human_attribute_name(:supplier_id)%></th>
                 <th><%=Order.human_attribute_name(:warehouse_id)%></th>
                 <th><%=Order.human_attribute_name(:estimated_delivery_date)%></th>
+                <th><%=Order.human_attribute_name(:status)%></th>
             </tr>
         </thread>
         <tbody>
@@ -17,6 +18,7 @@
                 <td><%= order.supplier.full_description %></td>
                 <td><%= order.warehouse.full_description %></td>
                 <td><%= I18n.localize(order.estimated_delivery_date) %></td>
+                <td><%= I18n.t(order.status) %></td>
             </tr>
             <% end %>
         </tbody>

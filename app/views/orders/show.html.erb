@@ -12,7 +12,16 @@
     <dd> <%= I18n.localize(@order.estimated_delivery_date) %></dd>
     <dt> <strong><%= Order.human_attribute_name(:user_id)%>:</strong> </dt>
     <dd> <%= @order.user.description %></dd>
+    <dt> <strong><%= Order.human_attribute_name(:status)%>:</strong> </dt>
+    <dd> <%= I18n.t(@order.status) %></dd>
     </dl>
+</div>
+
+<div>
+<% if @order.pending? %>
+    <%= button_to 'Marcar como ENTREGUE', delivered_order_path(@order.id)%>
+    <%= button_to 'Marcar como CANCELADO', canceled_order_path(@order.id)%>
+<% end %>
 </div>
 
 <div>
