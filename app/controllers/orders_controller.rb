@@ -46,6 +46,7 @@ class OrdersController < ApplicationController
 
     def delivered
         @order.delivered!
+        @order.deliver_order
         redirect_to @order
     end
 

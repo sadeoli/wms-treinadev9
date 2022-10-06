@@ -13,7 +13,7 @@ class Order < ApplicationRecord
 
   before_validation :generate_code
 
-  private
+
 
   def generate_code
     self.code = SecureRandom.alphanumeric(10).upcase
@@ -24,4 +24,13 @@ class Order < ApplicationRecord
       self.errors.add(:estimated_delivery_date, " deve ser futura.")
     end
   end
+
+  def deliver_order
+    order_items.each do |item|
+      item.quantity.times do
+          StockProduct.create!(order:self, warehouse:warehouse, product_model:item.product_model)
+      end
+    end
+  end
+
 end
