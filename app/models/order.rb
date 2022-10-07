@@ -11,7 +11,7 @@ class Order < ApplicationRecord
   validates :code, format: { with: /[A-Z0-9]{10}/ }
   validate :estimated_delivery_date_is_future
 
-  before_validation :generate_code
+  before_validation :generate_code, on: :create 
 
 
 
