@@ -18,6 +18,14 @@
     </dl>
 </div>
 <div>
+<h4>Itens em Estoque</h4>
+<ul>
+    <% @stocks.each_pair do |product, quantity| %>
+    <li><%=quantity%> x <%= product.sku%></li>        
+    <%end%>
+</ul>
+</div>
+<div>
     <%= link_to 'Editar', edit_warehouse_path(@warehouse) %>
     <%= button_to 'Remover', @warehouse, method: :delete  %>
 </div>

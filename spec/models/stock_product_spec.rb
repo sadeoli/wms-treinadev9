@@ -23,7 +23,7 @@ RSpec.describe StockProduct, type: :model do
             expect(stock_product.serial_number.length).to eq 20
         end
 
-        it 'ao criar um StockProduct' do
+        it 'e não é modificado' do
             # Arrange
             supplier = Supplier.create!(corporate_name: 'ACME LTDA', brand_name: 'ACME', registration_number: '43572202100760', 
                 full_address: 'Av das Palmas, 100', city: 'Bauru', state: 'SP', email: 'contato@acme.com',
