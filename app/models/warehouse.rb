@@ -3,6 +3,7 @@ class Warehouse < ApplicationRecord
     validates :code, :cep, uniqueness: true
     validates :cep, format: { with: /[0-9]{5}-[0-9]{3}/ }
     has_many :stock_products
+    has_many :product_models, through: :stock_products
 
     def full_description
         "#{code} - #{name}"

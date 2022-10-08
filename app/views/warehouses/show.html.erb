@@ -17,14 +17,37 @@
     <dd> <%= @warehouse.cep %> </dd>
     </dl>
 </div>
-<div>
-<h4>Itens em Estoque</h4>
-<ul>
+
+<section id="stock_products">
+    <h4>Itens em Estoque</h4>
+    <ul>
     <% @stocks.each_pair do |product, quantity| %>
     <li><%=quantity%> x <%= product.sku%></li>        
     <%end%>
-</ul>
-</div>
+    </ul>
+</section>
+
+<section id="stock_destination">
+    <h4>Saída de Estoque</h4>
+    <%= form_with(url: warehouse_stock_product_destinations_path(@warehouse.id)) do |f| %>
+        <div>
+            <%= f.label(:product_model_id, 'Item para Saída')%>
+            <%= f.collection_select(:product_model_id, @product_models, :id, :sku)  %>
+        </div>
+        <div>
+            <%= f.label(:recipient, 'Destinatário')%>
+            <%= f.text_field(:recipient)%>
+        </div>
+        <div>
+            <%= f.label(:address, 'Endereço Destino')%>
+            <%= f.text_field(:address)%>
+        </div>
+        <div>
+            <%= f.submit "Confirmar Retirada"%>
+        </div>
+    <% end %>
+</section>
+
 <div>
     <%= link_to 'Editar', edit_warehouse_path(@warehouse) %>
     <%= button_to 'Remover', @warehouse, method: :delete  %>
